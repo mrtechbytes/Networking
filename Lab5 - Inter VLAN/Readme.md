@@ -14,21 +14,27 @@ Implementar y configurar una red LAN segmentada en 2 VLANs utilizando el esquema
 ## Referencia de comandos:
 '''text
 ! Cambio de nombre del dispositivo
+
 hostname Sw-1
 
 ! Desactivar la búsqueda DNS al ingresar comandos erróneos en la CLI
+
 no ip domain-lookup
 
 ! Mensaje de advertencia al acceder a la consola del switch
+
 banner motd "Access denied. Authorized personnel only."
 
 ! Contraseña cifrada para acceder al modo EXEC privilegiado
+
 enable secret CCNA
 
 ! Cifrado de contraseñas guardadas en texto plano dentro de la configuración
+
 service password-encryption
 
 ! Configuración de autenticación para el acceso por puerto de consola
+
 line console 0
  
  password cisco
@@ -36,11 +42,13 @@ line console 0
  login
 
 ! Creación de la VLAN 13
+
 vlan 13
  
  name Gerencia
 
 ! Configuración del puerto de acceso asignado a la VLAN 13
+
 interface FastEthernet0/2
  
  description Conexión a PC-1 (Gerencia)
@@ -50,6 +58,7 @@ interface FastEthernet0/2
  switchport access vlan 13
 
  ! Configuración de la interfaz como enlace troncal 802.1Q
+
 interface FastEthernet0/1
  
  description Enlace Troncal hacia Router/Switch
@@ -61,6 +70,7 @@ interface FastEthernet0/1
  switchport trunk native vlan 1
 
 ! Activación y configuración de Port Security en puerto de acceso
+
 interface FastEthernet0/2
  
  switchport port-security
@@ -70,6 +80,7 @@ interface FastEthernet0/2
  switchport port-security violation restrict
 
  ! Configuración de subinterfaz en el router con encapsulación 802.1Q
+
 interface GigabitEthernet0/0.13
  
  description Subinterfaz Gateway VLAN 13
@@ -79,6 +90,7 @@ interface GigabitEthernet0/0.13
  ip address 10.0.0.1 255.255.255.0
 
  ! Desactivación masiva de interfaces no utilizadas y de CDP por seguridad
+
 interface range FastEthernet0/4 - 24
  
  shutdown
@@ -100,6 +112,7 @@ show vlan brief
 show ip interface brief
 
 ! Guardar cambios en la NVRAM
+
 write memory
 
 ## Habilidades demostradas:
