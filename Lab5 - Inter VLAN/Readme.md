@@ -12,28 +12,28 @@ Implementar y configurar una red LAN segmentada en 2 VLANs utilizando el esquema
 1 router 2901
 
 ## Referencia de comandos:
-'''text
-! Cambio de nombre del dispositivo
+
+### Cambio de nombre del dispositivo
 
 hostname Sw-1
 
-! Desactivar la búsqueda DNS al ingresar comandos erróneos en la CLI
+### Desactivar la búsqueda DNS al ingresar comandos erróneos en la CLI
 
 no ip domain-lookup
 
-! Mensaje de advertencia al acceder a la consola del switch
+### Mensaje de advertencia al acceder a la consola del switch
 
 banner motd "Access denied. Authorized personnel only."
 
-! Contraseña cifrada para acceder al modo EXEC privilegiado
+### Contraseña cifrada para acceder al modo EXEC privilegiado
 
 enable secret CCNA
 
-! Cifrado de contraseñas guardadas en texto plano dentro de la configuración
+### Cifrado de contraseñas guardadas en texto plano dentro de la configuración
 
 service password-encryption
 
-! Configuración de autenticación para el acceso por puerto de consola
+### Configuración de autenticación para el acceso por puerto de consola
 
 line console 0
  
@@ -41,13 +41,13 @@ line console 0
  
  login
 
-! Creación de la VLAN 13
+### Creación de la VLAN 13
 
 vlan 13
  
  name Gerencia
 
-! Configuración del puerto de acceso asignado a la VLAN 13
+### Configuración del puerto de acceso asignado a la VLAN 13
 
 interface FastEthernet0/2
  
@@ -57,7 +57,7 @@ interface FastEthernet0/2
  
  switchport access vlan 13
 
- ! Configuración de la interfaz como enlace troncal 802.1Q
+### Configuración de la interfaz como enlace troncal 802.1Q
 
 interface FastEthernet0/1
  
@@ -69,7 +69,7 @@ interface FastEthernet0/1
  
  switchport trunk native vlan 1
 
-! Activación y configuración de Port Security en puerto de acceso
+### Activación y configuración de Port Security en puerto de acceso
 
 interface FastEthernet0/2
  
@@ -79,7 +79,7 @@ interface FastEthernet0/2
  
  switchport port-security violation restrict
 
- ! Configuración de subinterfaz en el router con encapsulación 802.1Q
+### Configuración de subinterfaz en el router con encapsulación 802.1Q
 
 interface GigabitEthernet0/0.13
  
@@ -89,7 +89,7 @@ interface GigabitEthernet0/0.13
  
  ip address 10.0.0.1 255.255.255.0
 
- ! Desactivación masiva de interfaces no utilizadas y de CDP por seguridad
+### Desactivación masiva de interfaces no utilizadas y de CDP por seguridad
 
 interface range FastEthernet0/4 - 24
  
@@ -97,7 +97,7 @@ interface range FastEthernet0/4 - 24
  
  no cdp enable
 
- ! Verificación de estados, tablas y configuraciones activas
+### Verificación de estados, tablas y configuraciones activas
 
 show running-config
 
@@ -111,9 +111,10 @@ show vlan brief
 
 show ip interface brief
 
-! Guardar cambios en la NVRAM
+### Guardar cambios en la NVRAM
 
 write memory
+
 
 ## Habilidades demostradas:
 Segmentación de red mediante VLANs (IEEE 802.1Q).
