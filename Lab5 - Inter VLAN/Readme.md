@@ -86,11 +86,17 @@ interface range FastEthernet0/4 - 24
  no cdp enable
 
  ! Verificación de estados, tablas y configuraciones activas
+
 show running-config
+
 show port-security
+
 show interfaces FastEthernet0/1
+
 show cdp neighbors
+
 show vlan brief
+
 show ip interface brief
 
 ! Guardar cambios en la NVRAM
