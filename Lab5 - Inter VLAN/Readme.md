@@ -30,41 +30,59 @@ service password-encryption
 
 ! Configuración de autenticación para el acceso por puerto de consola
 line console 0
+ 
  password cisco
+ 
  login
 
 ! Creación de la VLAN 13
 vlan 13
+ 
  name Gerencia
 
 ! Configuración del puerto de acceso asignado a la VLAN 13
 interface FastEthernet0/2
+ 
  description Conexión a PC-1 (Gerencia)
+ 
  switchport mode access
+ 
  switchport access vlan 13
 
  ! Configuración de la interfaz como enlace troncal 802.1Q
 interface FastEthernet0/1
+ 
  description Enlace Troncal hacia Router/Switch
+ 
  switchport mode trunk
+ 
  switchport trunk allowed vlan 13,24
+ 
  switchport trunk native vlan 1
 
 ! Activación y configuración de Port Security en puerto de acceso
 interface FastEthernet0/2
+ 
  switchport port-security
+ 
  switchport port-security mac-address sticky
+ 
  switchport port-security violation restrict
 
  ! Configuración de subinterfaz en el router con encapsulación 802.1Q
 interface GigabitEthernet0/0.13
+ 
  description Subinterfaz Gateway VLAN 13
+ 
  encapsulation dot1Q 13
+ 
  ip address 10.0.0.1 255.255.255.0
 
  ! Desactivación masiva de interfaces no utilizadas y de CDP por seguridad
 interface range FastEthernet0/4 - 24
+ 
  shutdown
+ 
  no cdp enable
 
  ! Verificación de estados, tablas y configuraciones activas
